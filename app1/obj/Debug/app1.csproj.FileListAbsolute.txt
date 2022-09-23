@@ -1,0 +1,7 @@
+C:\Users\carlo\RiderProjects\CS264Assignment1\app1\bin\Debug\app1.exe
+C:\Users\carlo\RiderProjects\CS264Assignment1\app1\bin\Debug\app1.pdb
+C:\Users\carlo\RiderProjects\CS264Assignment1\app1\obj\Debug\app1.csproj.AssemblyReference.cache
+C:\Users\carlo\RiderProjects\CS264Assignment1\app1\obj\Debug\app1.csproj.SuggestedBindingRedirects.cache
+C:\Users\carlo\RiderProjects\CS264Assignment1\app1\obj\Debug\app1.csproj.CoreCompileInputs.cache
+C:\Users\carlo\RiderProjects\CS264Assignment1\app1\obj\Debug\app1.exe
+C:\Users\carlo\RiderProjects\CS264Assignment1\app1\obj\Debug\app1.pdb
