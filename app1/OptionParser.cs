@@ -5,12 +5,12 @@ namespace assignment1
 {
     public class OptionParser
     {
-        private static OptionParser instance;
+        private static OptionParser _instance;
         private byte _flags;
         public string Input { get; }
         public string Output { get; }
 
-        private static readonly Dictionary<string, Flag> Map = new Dictionary<string, Flag>()
+        private static readonly Dictionary<string, Flag> Map = new()
         {
             { "-v", Flag.Verbose },
             { "--verbose", Flag.Verbose },
@@ -24,7 +24,7 @@ namespace assignment1
             { "--list-formats", Flag.List}
         };
 
-        public enum Flag
+        private enum Flag
         {
             Output = 1 << 0, 
             Verbose = 1 << 1, 
@@ -33,11 +33,11 @@ namespace assignment1
             List = 1 << 4
         }
 
-        public static OptionParser GetInstance(string[] args)
+        public static OptionParser GetInstance(IEnumerable<string> args)
         {
-            return instance != null ? instance : (instance = new OptionParser(args));
+            return _instance ??= new OptionParser(args);
         }
-        private OptionParser(string[] args)
+        private OptionParser(IEnumerable<string> args)
         {
             Flag last = 0;
             foreach (var s in args)
@@ -79,7 +79,8 @@ namespace assignment1
             if(Active(Flag.List))
                 Console.WriteLine("Supported formats: \n\t-CSV\n\t-JSON\n\t-MD\n\t-HTTP");
         }
-        public bool Active(Flag flag)
+
+        private bool Active(Flag flag)
         {
             return (_flags & (byte) flag) > 0;
         }
