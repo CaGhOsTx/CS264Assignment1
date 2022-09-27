@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace assignment1
+namespace app1
 {
     public class OptionParser
     {

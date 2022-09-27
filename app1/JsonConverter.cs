@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 
-namespace assignment1
+namespace app1
 {
     public class JsonConverter : Table
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace assignment1
+namespace app1
 {
     public abstract class Table
     {
@@ -37,10 +37,10 @@ namespace assignment1
         {
             return TablePrefix(table)
                    + Enumerable.Range(table.Start, table.End - 1)
-                       .Select(row => table.Data.Keys.Select(head => WriteCell(head, table.Data[head]
-                               .ContainsKey(row)
-                               ? table.Data[head][row]
-                               : null))
+                       .Select(row => table.Data.Keys.Select(head => 
+                               WriteCell(head, table.Data[head].ContainsKey(row)
+                                   ? table.Data[head][row]
+                                   : null))
                            .Aggregate((a, b) => a + Delimiter + b)
                        ).Select(row => RowPrefix(table) + row + RowSuffix(table))
                        .Aggregate((a, b) => a + RowDelimiter + b)
