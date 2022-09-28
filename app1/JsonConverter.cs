@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 
 namespace app1
 {
-    public class JsonConverter : Table
+    public sealed class JsonConverter : Table
     {
-        public override Table.IndexedTable Serialise(string s)
+        private static JsonConverter _instance;
+        public static JsonConverter Instance => _instance ??= new JsonConverter();
+        public override IndexedTable Serialise(string s)
         {
             if(s == null) throw new ArgumentNullException(nameof(s));
             s = s.Replace("\r", "");
             if(!s.StartsWith("[") || !s.EndsWith("]"))
-            {
                 throw new FormatException("JSON should be an array of objects");
-            }
             var table = new Dictionary<string, SortedDictionary<int, string>>();
             var stack = new Stack<char>();
             int row = 0, min = int.MaxValue, max = int.MinValue;
@@ -100,27 +98,15 @@ namespace app1
             return $"{(qKey? key : $"\"{key}\"")}:{(qVal? value : $"\"{value}\"")}".Replace("\r", "");
         }
 
-        protected override string RowPrefix(IndexedTable table)
-        {
-            return "{";
-        }
+        protected override string TableHeader(IEnumerable<string> headers) => string.Empty;
 
-        protected override string RowSuffix(IndexedTable table)
-        {
-            return "}";
-        }
+        protected override string RowPrefix() => "{\n\t\t";
 
-        protected override string TablePrefix(IndexedTable table)
-        {
-            return "[";
-        }
+        protected override string RowSuffix() => "\n\t}";
+        protected override string TablePrefix() => "[\n\t";
+        protected override string TableSuffix() => "\n]";
 
-        protected override String TableSuffix(IndexedTable table)
-        {
-            return "]";
-        }
-
-        public JsonConverter() : base(',', ',') {}
+        private JsonConverter() : base(",\n\t\t", ",\n\t", true) {}
     }
     
     
