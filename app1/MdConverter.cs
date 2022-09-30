@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace app1;
 
 public sealed class MdConverter : Table
 {
@@ -35,7 +34,7 @@ public sealed class MdConverter : Table
         return new IndexedTable(table, 2, rows.Count - 1);
     }
     
-    protected override string WriteCell(string key, string value) => value ?? string.Empty;
+    protected override string WriteCell(string key, string value) => value ?? " ";
     protected override string TableHeader(IEnumerable<string> headers)
     {
         var l = headers.ToList();

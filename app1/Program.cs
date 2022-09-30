@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace app1;
 internal static class Program
 {
     private static readonly Dictionary<string, Table> Converters = new()

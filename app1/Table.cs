@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace app1;
 
 public abstract class Table
 {

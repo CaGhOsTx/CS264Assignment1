@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace app1;
 
 public class ArgumentParser
 {
